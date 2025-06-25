@@ -1,0 +1,8 @@
+[tool.poetry]
+name = "service_2"
+version = "0.1.0"
+description = "Python Service 2"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+flask = "^2.0"
