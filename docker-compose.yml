@@ -1,32 +1,13 @@
-version: '3.8'
-
 services:
   service1:
-    build: ./service_1  # Path to service 1 (Go)
+    build: ./service_1
     expose:
-      - "8001"          # Expose service 1 on port 8001
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8001/ping"]  # Health check for service 1
-      interval: 30s
-      timeout: 10s
-      retries: 3
-
+      - "8001"
   service2:
-    build: ./service_2  # Path to service 2 (Python)
+    build: ./service_2
     expose:
-      - "8002"          # Expose service 2 on port 8002
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8002/ping"]  # Health check for service 2
-      interval: 30s
-      timeout: 10s
-      retries: 3
-
+      - "8002"
   nginx:
-    build: ./nginx  # Path to nginx reverse proxy
+    build: ./nginx
     ports:
-      - "8080:80"    # Expose nginx on port 8080
-    depends_on:
-      service1:
-        condition: service_healthy  # Nginx waits until service1 is healthy
-      service2:
-        condition: service_healthy  # Nginx waits until service2 is healthy
+      - "8080:80"
